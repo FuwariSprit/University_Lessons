@@ -1,0 +1,33 @@
+286120 武田佑樹
+
+Script started on Thu Jun  9 10:12:37 2016
+u286120@imac-113[31]: cat 6-6.c
+/* 286120 武田 佑樹 */
+#include <stdio.h>
+int main(void) {
+  double hwidth, height, pi, taiseki ;
+  
+  pi = 3.14 ;
+  
+  printf("半径を入力してください\n") ;
+  scanf("%lf", &hwidth ) ;
+  printf("高さを入力してください\n") ;
+  scanf("%lf", &height ) ;
+
+  taiseki = ( hwidth * hwidth * pi ) * height / 3 ;
+
+  printf("円錐の面積は%.2fです\n", taiseki ) ;
+
+  return 0 ;
+}
+u286120@imac-113[32]: gcc -Wall -o 6-6 6-6.c
+u286120@imac-113[33]: 6-6
+半径を入力してください
+5
+高さを入力してください
+5
+円錐の面積は130.83です
+u286120@imac-113[34]: exit
+exit
+
+Script done on Thu Jun  9 10:13:24 2016

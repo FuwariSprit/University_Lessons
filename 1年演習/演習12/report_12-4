@@ -1,0 +1,30 @@
+Script started on Mon Jul 11 17:49:42 2016
+u286120@imac-102[31]: cat 12-4.c
+// 286120 武田佑樹
+#include <stdio.h>
+int main(void) {
+  int i = 2, n, a, count = 0 ;
+
+  printf("正の数を入力: ") ;
+  scanf("%d", &n) ;
+  while(i <= n) {
+    a = 2 ;
+    while( (i % a != 0) && (i > a) ) {
+      a++ ;
+    }
+    if (i == a) {
+      count++ ;
+    }
+    i++ ;
+  }
+  printf("素数の数は%d個です\n", count) ;
+  return 0 ;
+}
+u286120@imac-102[32]: gcc -Wa;;[K[Kll ^o[K[K-o 12-4 12-4.c
+u286120@imac-102[33]: ./12-4
+正の数を入力: 100
+素数の数は25個です
+u286120@imac-102[34]: exit
+exit
+
+Script done on Mon Jul 11 17:50:50 2016
