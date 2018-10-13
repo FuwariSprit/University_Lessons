@@ -1,0 +1,343 @@
+@charset "UTF-8";
+
+/* ----- Reset ----- */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+/* remember to define focus styles! */
+:focus {
+	outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+	text-decoration: none;
+}
+del {
+	text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing=&quot;0&quot;' in the markup */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* ------ /Reset ----- */
+
+/* ----- 全体 -----*/
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	background-color: #FFFFFF;
+}
+
+#wrapper:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+#wrapper {
+	width: 1000px;
+	height: 100%;
+	margin: 0 auto;
+	margin-top: 20px;
+	padding: 5px 5px 30px 30px;
+	border-radius: 10px;
+	background-color: rgb(242, 242, 242);
+}
+/* ----- /全体 ----*/
+
+/* ----- グローバルナビゲーション ----- */
+header {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #FFFFFF;
+	padding: 10px 0 1px 0;
+}
+
+header {
+	width: 80%;
+	margin: 0 auto;
+}
+
+header h1 img {
+	width: 30%;
+	min-width: 250px;
+	margin-bottom: 20px;
+
+}
+
+#global {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #FFFFFF;
+	clear: both;
+	overflow: hidden;
+	border-bottom: 1.5px solid #000000;
+}
+
+#global ul {
+	margin: 0;
+	padding: 0;
+}
+
+#global ul li {
+	width: 33.3%;
+	margin: 0;
+	box-sizing: border-box;
+	float: left;
+	text-align: center;
+}
+
+#global ul li a {
+	color: #000000;
+	display: block;
+	padding: 15px 20px 15px 20px;
+	text-decoration: none;
+}
+
+#global ul li a:visited {
+	color: #000000;
+}
+
+.fixed {
+	position: fixed;
+	width: 80%;
+	top: 0;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+	z-index: 100;
+}
+
+/* ナビゲーションのアニメーション */
+#global i {
+	animation-name: stylie-transform-keyframes;
+	animation-duration: 2000ms;
+	animation-delay: 0ms;
+	animation-fill-mode: forwards;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	transform-origin: 0 0;
+}
+@keyframes stylie-transform-keyframes {
+	0% {transform:translate(-5px, 0px) scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translate(0%, 0%);animation-timing-function: cubic-bezier(.25,.25,.75,.75);}
+	50% {transform:translate(0px, 0px) scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translate(0%, 0%);animation-timing-function: cubic-bezier(.25,.25,.75,.75);}
+	100% {transform:translate(-5px, 0px) scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) translate(0%, 0%);}
+}
+
+/* ----- /グローバルナビゲーション ----- */
+
+/* ----- main内 ----- */
+main {
+	float: left;
+	width: 65%;
+	height: 90%;
+	background-color: #FFFFFF;
+	margin: 20px 0 0 0;
+	padding: 20px 10px 0 20px;
+	border-radius: 10px;
+}
+
+main h2 {
+	position: relative;
+	color: white;
+	background: #81d0cb;
+	line-height: 1.4;
+	padding: 0.5em 0.5em 0.5em 1.8em;
+	margin: 10px 0 10px 0;
+}
+
+main h2:before {
+	font-family: FontAwesome;
+	content: "\f14a";
+	position: absolute;
+	left : 0.5em; /*左端からのアイコンまでの距離*/
+}
+
+main h3 {
+	position: relative;
+	padding: 0.5em 0.5em 0.1em 1.0em;
+	margin-bottom: 10px;
+	font-family:
+	'M+ C Type-2 (basic latin) Regular',
+	'M+ C Type-2 (general-j) Regular';
+	font-size: 1.1em;
+	line-height: 1.8;
+}
+
+main h3:after {
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 7px;
+	background: -webkit-repeating-linear-gradient(-45deg, #6ad1c8, #6ad1c8 2px, #fff 2px, #fff 4px);
+	background: repeating-linear-gradient(-45deg, #6ad1c8, #6ad1c8 2px, #fff 2px, #fff 5px);
+}
+
+main p {
+	margin-bottom: 1.5em;
+}
+
+main section {
+	padding-bottom: 20px;
+	margin-bottom: 30px;
+	border-bottom: 1.5px dashed rgb(232, 232, 232);
+}
+
+main section p {
+	clear: both;
+	font-family:
+	'M+ C Type-2 (basic latin) Regular',
+	'M+ C Type-2 (general-j) Regular';
+	font-size: 0.9em;
+	line-height: 200%;
+}
+
+main section div {
+	margin: 0 0 0 20px;
+}
+
+.top_images img {
+	display: block;
+	width: 90%;
+	margin: 0 auto;
+}
+
+.secTop_images img {
+	display: block;
+	width: 70%;
+	margin: 0 auto;
+}
+
+.secTop_images2 img {
+	display: block;
+	width: 30%;
+	margin: 0 auto;
+}
+
+/* ----- /main内 ----- */
+
+/* ----- サイドバー ----- */
+aside {
+	float: left;
+	width: 30%;
+	margin-top: 20px;
+}
+
+aside div {
+	clear: both;
+	margin-left: 15px;
+	background-color: #FFFFFF;
+	border-radius: 10px;
+}
+
+.profile {
+	padding: 10px 5px 5px 5px;
+}
+
+.profile h4 {
+	margin-bottom: 10px;
+}
+
+.profile p {
+	margin-top: 20px;
+	font-size: 0.75em;
+}
+
+.profile img {
+	margin-right: 5px;
+	float: left;
+	border-radius: 50px;
+}
+
+.profile address {
+	clear: both;
+	font-size: 0.9em;
+	text-align: center;
+	margin: 20px 0 3px 0;
+}
+/* ----- /サイドバー ----- */
+
+/* ----- フッター ----- */
+#footer_nav {
+	width: 40%;
+	margin: 0 auto;
+	background-color: #FFFFFF;
+	clear: both;
+	margin-top: 20px;
+	overflow: hidden;
+}
+
+#footer_nav ul {
+	margin: 0;
+	padding: 0;
+}
+
+#footer_nav ul li {
+	width: 33.3%;
+	margin: 0;
+	box-sizing: border-box;
+	float: left;
+	text-align: center;
+	font-size: 0.8em;
+	border-left: 1px dashed #000000;
+}
+
+#footer_nav ul li:last-child {
+	border-right: 1px dashed #000000;
+}
+
+#footer_nav ul li a {
+	color: #000000;
+	display: block;
+	padding: 5px 10px 5px 10px;
+	text-decoration: none;
+}
+
+#footer_nav ul li a:visited {
+	color: #000000;
+}
+
+footer div {
+	font-family:
+	'M+ C Type-2 (basic latin) Regular',
+	'M+ C Type-2 (general-j) Regular';
+	margin: 15px 0 20px 0;
+	text-align: center;
+	font-size: 0.8em;
+}
+/* ----- /フッター ----- */
