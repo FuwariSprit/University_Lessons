@@ -1,0 +1,143 @@
+Script started on Wed Nov 29 02:22:55 2017
+u286120@cse-ssh2[31]: cat SimpleBank.java
+// 武田佑樹 286120 課題6
+
+import java.util.Hashtable;
+
+public class SimpleBank {
+    private Hashtable<String, SimpleAccount> customer;
+    private SimpleAccount user;
+    private boolean search;
+    private int judge;
+    
+    public SimpleBank() {
+        customer = new Hashtable<String, SimpleAccount>();
+    }
+
+    public int open(String name){
+        search = customer.containsKey(name);
+
+        if(search){
+            return -7;
+        } else {
+            user = new SimpleAccount(name);
+            customer.put(name, user);
+            return 0;
+        }
+    }
+    
+    public int close(String name){
+        search = customer.containsKey(name);
+
+        if(!search){
+            return -7;
+        } else {
+            user = customer.get(name);
+            judge = user.showBalance();
+
+            if(judge > 0){
+                return -1;
+            } else {
+                customer.remove(name);
+                return 0;
+            }
+        }
+    }
+    
+    public int deposit(String name, int amount){
+        search = customer.containsKey(name);
+        
+        if(!search){
+            return -7;
+        } else {
+            user = customer.get(name);
+            judge = user.deposit(amount);
+
+            if(judge == -3){
+                return -3;
+            } else {
+                return 0;
+            }
+        }
+    }
+    
+    public int withdraw(String name, int amount){
+        search = customer.containsKey(name);
+        
+        if(!search){
+            return -7;
+        } else {
+            user = customer.get(name);
+            judge = user.withdraw(amount);
+            
+            if(judge == -3){
+                return -3;
+            } else if(judge == -1){
+                return -1;
+            } else {
+                return 0;
+            }
+        }
+    }
+        
+    public int showBalance(String name){
+        search = customer.containsKey(name);
+
+        if(!search){
+            return -7;
+        } else {
+            user = customer.get(name);
+            judge = user.showBalance();
+            
+            return judge;
+        }
+    }
+}
+u286120@cse-ssh2[32]: cat SimpleBank.java[P[P[P[P[1@A[7@ccount.[P
+// 武田佑樹 286120 課題5 (1)
+public class SimpleAccount {
+    private String name;
+    private int balance;
+
+    public SimpleAccount(String myName){
+        name = myName;
+        balance = 0;
+    }
+    
+    public int deposit(int amount){
+        if(amount <= 0){
+            return -3;
+        } else {
+            balance += amount;
+            return 0;
+        }
+    }
+    
+    public int withdraw(int amount){
+        if(amount <= 0){
+            return -3;
+        } else if(amount > balance){
+            return -1;
+        } else {
+            balance -= amount;
+            return 0;
+        }
+    }
+    
+    public int showBalance(){
+        return balance;
+    }
+    
+}
+u286120@cse-ssh2[33]: jac[Kvac SimpleBank.java
+u286120@cse-ssh2[34]: javac SimpleBank.java[P[P[P[P[1@A[7@ccount.[P
+u286120@cse-ssh2[35]: checksy[Ktyle D[KSimpleBank.java
+監査を開始しています...
+監査が完了しました。
+u286120@cse-ssh2[36]: checkstyle SimpleBank.javak[P[P[P[P[1@A[7@ccount.[P
+監査を開始しています...
+監査が完了しました。
+u286120@cse-ssh2[37]: exit
+exit
+
+Script done on Wed Nov 29 02:23:55 2017

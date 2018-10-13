@@ -1,0 +1,105 @@
+Script started on Fri Oct 13 01:04:57 2017
+u286120@cse-ssh2[31]: cat OneButtonApp.java
+// 武田佑樹 286120 課題2 (1)
+
+public class OneButtonApp {
+    public static void main(String[] args){
+	java.awt.Frame myFrame = new java.awt.Frame("こんにちわ");
+	java.awt.Button okButton = new java.awt.Button("OK");
+	
+	myFrame.add(okButton);
+	myFrame.setSize(200, 100);
+	myFrame.setVisible(true);
+    }
+}
+u286120@cse-ssh2[32]: jaca[K[Kvac OneButtonApp.java
+u286120@cse-ssh2[33]: cat ShortButtonApp.java
+// 武田佑樹 286120 課題2 (2)
+
+import java.awt.Frame;
+import java.awt.Button;
+
+public class ShortButtonApp {
+    public static void main(String[] args){
+	Frame myFrame = new Frame("こんにちわ");
+	Button okButton = new Button("OK");
+	
+	myFrame.add(okButton);
+	myFrame.setSize(200, 100);
+	myFrame.setVisible(true);
+    }
+}
+u286120@cse-ssh2[34]: javac ShortButtonApp.java
+u286120@cse-ssh2[35]: cat ShortButtonApp.java
+// 武田佑樹 286120 課題2 (2)
+
+import java.awt.Frame;
+import java.awt.Button;
+
+public class ShortButtonApp {
+    public static void main(String[] args){
+	Frame myFrame = new Frame("こんにちわ");
+	Button okButton = new Button("OK");
+	
+	myFrame.add(okButton);
+	myFrame.setSize(200, 100);
+	myFrame.setVisible(true);
+    }
+}
+u286120@cse-ssh2[36]: javac ShortButtonApp.java
+u286120@cse-ssh2[37]: cat Taro.java
+// 武田佑樹 286120 課題2 (4)
+
+public class Taro {
+    public static void main(String[] args){
+	Hanako Hanako = new Hanako();
+
+	Hanako.sayHello();
+    }
+}
+
+class Hanako {
+    public void sayHello(){
+	System.out.println("おはようございます");
+    }
+}
+u286120@cse-ssh2[38]: javac Taro.java
+u286120@cse-ssh2[39]: java Taro
+おはようございます
+u286120@cse-ssh2[40]: java[K[K[K[Kcat Bool[Kk.java
+class Book {
+    private String title;
+    private int price;
+
+    public Book(String newTitle, int newPrice){
+        this.title = newTitle;
+        this.price = newPrice;
+    }
+
+    public void showTitle(){
+        System.out.println("この本の題名は" + title + "で値段は" + price + "円です");
+    }
+}
+u286120@cse-ssh2[41]: javac Bool[Kk.java
+u286120@cse-ssh2[42]: cat Bool[KkStore.java
+// 武田佑樹 286120 課題2 (5)
+public class BookStore {
+    public static void main(String[] args){
+        Book easyJava = new Book("やさしいJava活用編", 2580);
+        Book harem = new Book("終末のハーレム", 626);
+        Book pptp = new Book("ポプテピピック", 797);
+
+        easyJava.showTitle();
+        harem.showTitle();
+        pptp.showTitle();
+    }
+}
+u286120@cse-ssh2[43]: javac BookStore..[Kjava
+u286120@cse-ssh2[44]: java BookStore
+この本の題名はやさしいJava活用編で値段は2580円です
+この本の題名は終末のハーレムで値段は626円です
+この本の題名はポプテピピックで値段は797円です
+u286120@cse-ssh2[45]: exit
+exit
+
+Script done on Fri Oct 13 01:09:29 2017

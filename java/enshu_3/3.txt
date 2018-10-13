@@ -1,0 +1,75 @@
+Script started on Wed Oct 18 15:36:01 2017
+u286120@imac-106[31]: va[K[Kcat Account.java
+// 武田佑樹 286120 課題3 (1)
+public class Account {
+    private String name;
+    private int balance;
+
+    public Account(String myName){
+        name = myName;
+        balance = 0;
+    }
+
+    public void deposit(int amount){
+        if(amount <= 0){
+            System.out.println("不正な金額が指定されました");
+        } else {
+            balance += amount;
+            System.out.println(name + "さんの口座へ" + amount +
+                               "円預金し, 残高は" + balance + "円となりました");
+        }
+    }
+
+    public void withdraw(int amount){
+        if(amount > balance){
+            System.out.println("残高不足です");
+        } else if(amount <= 0){
+            System.out.println("不正な金額が指定されました");
+        } else {
+            balance -= amount;
+            System.out.println(name + "さんの口座から" + amount +
+                               "円払い戻し, 残高は" + balance + "円となりました");
+        }
+    }
+
+    public void showBalance(){
+        System.out.println(name + "さんの口座の現在の残高は" + balance + "円です");
+    }
+}
+u286120@imac-106[32]: javac Account.java
+u286120@imac-106[33]: check \[Kstyle Account.java
+監査を開始しています...
+監査が完了しました。
+u286120@imac-106[34]: aca[K[K[Kcat Customer.java
+// 武田佑樹 286120 課題3 (2)
+public class Customer {
+    public static void main(String[] args){
+        Account user = new Account("武田佑樹");
+
+        user.deposit(10000);
+        user.showBalance();
+        user.withdraw(50000);
+        user.showBalance();
+        user.deposit(-1000);
+        user.showBalance();
+        user.withdraw(-5000);
+        user.showBalance();
+    }
+}
+u286120@imac-106[35]: javac Customer.java
+u286120@imac-106[36]: checkstyle Customer.java
+監査を開始しています...
+監査が完了しました。
+u286120@imac-106[37]: CpMac [K[K[K[K[Kjava Customer.java[K[K[K[K[K
+武田佑樹さんの口座へ10000円預金し, 残高は10000円となりました
+武田佑樹さんの口座の現在の残高は10000円です
+残高不足です
+武田佑樹さんの口座の現在の残高は10000円です
+不正な金額が指定されました
+武田佑樹さんの口座の現在の残高は10000円です
+不正な金額が指定されました
+武田佑樹さんの口座の現在の残高は10000円です
+u286120@imac-106[38]: exit
+exit
+
+Script done on Wed Oct 18 15:38:27 2017

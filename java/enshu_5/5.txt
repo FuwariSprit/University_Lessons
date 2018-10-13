@@ -1,0 +1,91 @@
+Script started on Wed Nov  8 15:27:11 2017
+u286120@imac-116[31]: cat S[KMyBank.java
+// 武田佑樹 286120 課題5 (2)
+
+import java.util.Hashtable;
+
+public class MyBank {
+    public static void main(String[] args){
+        Hashtable<String, SimpleAccount> bank = new Hashtable<String, SimpleAccount>();
+
+        SimpleAccount ichiro = new SimpleAccount("一郎");
+        bank.put("一郎", ichiro);
+
+        SimpleAccount saburo = new SimpleAccount("三郎");
+        bank.put("三郎", saburo);
+        
+        SimpleAccount taro = new SimpleAccount("太郎");
+        bank.put("太郎", taro);
+
+        SimpleAccount hanako = new SimpleAccount("花子");
+        bank.put("花子", hanako);
+
+        int balance;
+
+        bank.get("三郎").deposit(1000);
+        bank.get("花子").deposit(5000);
+        bank.get("三郎").deposit(3000);
+        bank.get("花子").deposit(2000);
+        balance = bank.get("一郎").showBalance();
+        System.out.println("一郎の残高: " + balance);
+        balance = bank.get("三郎").showBalance();
+        System.out.println("三郎の残高: " + balance);
+        balance = bank.get("太郎").showBalance();
+        System.out.println("太郎の残高: " + balance);
+        balance = bank.get("花子").showBalance();
+        System.out.println("花子の残高: " + balance);
+    }
+}
+u286120@imac-116[32]: cat SimpleAccount.java
+// 武田佑樹 286120 課題5 (1)
+public class SimpleAccount {
+    private String name;
+    private int balance;
+
+    public SimpleAccount(String myName){
+        name = myName;
+        balance = 0;
+    }
+    
+    public int deposit(int amount){
+        if(amount <= 0){
+            return -3;
+        } else {
+            balance += amount;
+            return 0;
+        }
+    }
+    
+    public int withdraw(int amount){
+        if(amount <= 0){
+            return -3;
+        } else if(amount > balance){
+            return -1;
+        } else {
+            balance -= amount;
+            return 0;
+        }
+    }
+    
+    public int showBalance(){
+        return balance;
+    }
+    
+}
+u286120@imac-116[33]: javac MyBank.java
+u286120@imac-116[34]: javac SimpleAccount.java
+u286120@imac-116[35]: M[Kjava MyBank.[K
+一郎の残高: 0
+三郎の残高: 4000
+太郎の残高: 0
+花子の残高: 7000
+u286120@imac-116[36]: che[K[Kheckstyle MyBank.java
+監査を開始しています...
+監査が完了しました。
+u286120@imac-116[37]: checkstyle SimpleAccount.java
+監査を開始しています...
+監査が完了しました。
+u286120@imac-116[38]: exit
+exit
+
+Script done on Wed Nov  8 15:28:10 2017
