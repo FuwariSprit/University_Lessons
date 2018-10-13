@@ -1,0 +1,25 @@
+Script started on Thu Dec  1 16:21:43 2016
+u286120@imac-310[31]: cat 11-1.c
+#include<stdio.h>
+
+struct student {
+  int id;
+  char name[100];
+};
+
+int main(void) {
+  struct student s = {286000, "Taro"};
+  
+  printf("学生番号:%d\n", s.id);
+  printf("氏名:%s\n", s.name);
+  
+  return 0;
+}
+u286120@imac-310[32]: gcc -Wall -o 11-1 11-1.c
+u286120@imac-310[33]: 11-1
+学生番号:286000
+氏名:Taro
+u286120@imac-310[34]: exit
+exit
+
+Script done on Thu Dec  1 16:22:36 2016

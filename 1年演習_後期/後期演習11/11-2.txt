@@ -1,0 +1,64 @@
+Script started on Thu Dec  1 16:24:38 2016
+u286120@imac-310[31]: cat 11-2.c
+#include <stdio.h>
+
+#define NUM 5
+
+struct student {
+  int id;
+  char name[100];
+  double height;
+  double weight;
+};
+
+int main(void) {
+  struct student gakusei[NUM];
+  int i;
+
+  for (i = 0; i < NUM; i++) {
+    printf("学生番号:");
+    scanf("%d", &gakusei[i].id);
+    printf("氏名:");
+    scanf("%s", gakusei[i].name);
+    printf("身長:");
+    scanf("%lf", &gakusei[i].height);
+    printf("体重:");
+    scanf("%lf", &gakusei[i].weight);
+  }
+  for (i = 0; i < NUM; i++) {
+    printf("学生番号: %d 氏名: %s 身長: %f cm 体重: %f kg \n",
+	   gakusei[i].id, gakusei[i].name, gakusei[i].height, gakusei[i].weight);
+  }
+  return 0;
+}
+u286120@imac-310[32]: gcc -Wall -o 11-2 11-2.c
+u286120@imac-310[33]: 11-2
+学生番号:286000
+氏名:Taro
+身長:170.2
+体重:65,6  .6
+学生番号:286001
+氏名:Jiro
+身長:168
+体重:60
+学生番号:286002
+氏名:Hanako
+身長:160.3
+体重:50,2  .2
+学生番号:286004
+氏名:Saburo
+身長:166.4
+体重:55.4
+学生番号:286005
+氏名:Goro
+身長:181
+体重:80,2  .2
+学生番号: 286000 氏名: Taro 身長: 170.200000 cm 体重: 65.600000 kg 
+学生番号: 286001 氏名: Jiro 身長: 168.000000 cm 体重: 60.000000 kg 
+学生番号: 286002 氏名: Hanako 身長: 160.300000 cm 体重: 50.200000 kg 
+学生番号: 286004 氏名: Saburo 身長: 166.400000 cm 体重: 55.400000 kg 
+学生番号: 286005 氏名: Goro 身長: 181.000000 cm 体重: 80.200000 kg 
+u286120@imac-310[34]: exit
+exit
+
+Script done on Thu Dec  1 16:26:50 2016
