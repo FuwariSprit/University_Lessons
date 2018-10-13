@@ -1,0 +1,100 @@
+//5-1
+void processing(void){                          
+  int i,j;                                      
+                                                
+  for(i=0; i<height; i++){                      
+    for(j=0; j<width; j++){                     
+      imgout[0][j][i] = imgin[0][width-j][i];   
+      imgout[1][j][i] = imgin[1][width-j][i];   
+      imgout[2][j][i] = imgin[2][width-j][i];   
+    }                                           
+  }                                             
+  printf("\n出力画像データを作成しました.\n");                
+}                                               
+
+//5-2
+void processing(void){                 
+  int i,j, Y, Cb, Cr;                  
+                                       
+  printf("コピーモードを入力してください.\n");        
+  printf("コピーする場合: 1, 固定値に置き換える場合: 0");
+  printf("Y : ");                      
+  scanf("%d", &Y);                     
+  printf("Cb : ");                     
+  scanf("%d", &Cb);                    
+  printf("Cr : ");                     
+  scanf("%d", &Cr);                    
+                                       
+  for(i=0; i<height; i++){             
+    for(j=0; j<width; j++){            
+                                       
+      if(Y == 1){                      
+        imgout[0][j][i] = imgin[0][j][i
+      } else {                         
+        imgout[0][j][i] = 128;         
+      }                                
+      if(Cb == 1){                     
+        imgout[1][j][i] = imgin[1][j][i
+      } else {                         
+        imgout[1][j][i] = 128;         
+      }                                
+      if(Cr == 1){                     
+        imgout[2][j][i] = imgin[2][j][i
+      } else {                         
+        imgout[2][j][i] = 128;         
+      }                                
+    }                                  
+                                       
+  }                                    
+  printf("\n出力画像データを作成しました.\n");       
+}                                      
+
+//5-3
+void processing(void){
+   int i,j;
+    for(i=0; i<height; i++){
+     for(j=0; j<width; j++){
+       if((i<height/2 && j<width/2) || (i>height/2 && j>width/2)){
+         imgout[0][j][i] = 16;
+         imgout[1][j][i] = 128;
+         imgout[2][j][i] = 128;
+       } else {
+         imgout[0][j][i] = imgin[0][j][i];
+         imgout[1][j][i] = imgin[1][j][i];
+         imgout[2][j][i] = imgin[2][j][i];
+       }
+     }
+   }
+    printf("\n出力画像データを作成しました.\n");
+}
+
+//5-4
+void processing(void){                                                   
+  int i, j, k, w, n, count=0, count1=0;                                  
+                                                                         
+  printf("分割数を入力して下さい(2,4,8,16) : ");                                    
+  scanf("%d", &n);                                                       
+  w = width / n;                                                         
+                                                                         
+  for(i=0; i<height; i++){                                               
+    for(j=0; j<width; j=j+w){                                            
+      for(k=0; k<w; k++){                                                
+        if((count%2==0 && count1%2==1) || (count%2==1 && count1%2==0)){  
+          imgout[0][j+k][i] = imgin[0][j+k][i];                          
+          imgout[1][j+k][i] = imgin[1][j+k][i];                          
+          imgout[2][j+k][i] = imgin[2][j+k][i];                          
+        } else {                                                         
+          imgout[0][j+k][i] = 16;                                        
+          imgout[1][j+k][i] = 128;                                       
+          imgout[2][j+k][i] = 128;                                       
+        }                                                                
+      }                                                                  
+      count += 1;                                                        
+    }                                                                    
+      if(i!=0 && i%w==0){                                                
+        count1 += 1;                                                     
+      }                                                                  
+  }                                                                      
+                                                                         
+  printf("\n出力画像データを作成しました.\n");                                         
+}                                                                        

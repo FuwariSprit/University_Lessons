@@ -1,0 +1,22 @@
+void processing(void){
+  int i, j, k;
+  int pixel[256] = {};
+
+  for(i=0; i<height; i++){
+    for(j=0; j<width; j++){
+
+      for(k=0; k<256; k++){
+        if(imgin[0][j][i] == k){
+          pixel[k]++;
+        }
+      }
+
+    }
+  }
+
+  printf("＜度数表＞\n");
+  for(i=0; i<256; i++){
+    printf("画素値 %3d : %4d\n", i, pixel[i]);
+  }
+  //  printf("\n出力画像データを作成しました.\n");
+}

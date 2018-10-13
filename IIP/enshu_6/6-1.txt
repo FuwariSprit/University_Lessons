@@ -1,0 +1,32 @@
+void processing(void){
+   int i, j, k, l;
+   int n = 2;
+   int tmp;
+
+  for(i=0; i<height; i+=n){
+    for(j=0; j<width; j+=n){
+      tmp = 0;
+      for(k=0; k<n; k++){
+        for(l=0; l<n; l++){
+          tmp += imgin[0][j+l][i+k];
+        }
+      }
+      tmp /= n*n;
+      for(k=0; k<n; k++){
+        for(l=0; l<n; l++){
+          //printf("%d,%d\n", j+l, i+k);
+          imgout[0][j+l][i+k] = tmp;
+        }
+      }
+    }
+  }
+
+  for(i=0; i<height; i++){
+    for(j=0; j<width; j++){
+      imgout[1][j][i] = 128;
+      imgout[2][j][i] = 128;
+    }
+  }
+
+  printf("\n出力画像データを作成しました.\n");
+}

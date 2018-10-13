@@ -1,0 +1,74 @@
+void processing(void){
+  int i, j, k;
+  int pixels[256] = {};
+  double reg_pixels[256] = {};
+  int max_num = 0;
+  int max = 0;
+
+  for(i=0; i<height; i++){
+    for(j=0; j<width; j++){
+      imgout[0][j][i] = imgin[0][j][i];
+      imgout[1][j][i] = imgin[1][j][i];
+      imgout[2][j][i] = imgin[2][j][i];
+
+      for(k=0; k<256; k++){
+        if(imgin[0][j][i] == k){
+          pixels[k]++;
+        }
+      }
+
+      // 最大画素値を求める
+      max_num = 0;
+      max = pixels[0];
+      for(k=1; k<256; k++){
+        if(max < pixels[k]){
+          max = pixels[k];
+          max_num = k;
+        }
+      }
+
+      // 正規化
+      for(k=0; k<256; k++){
+        //reg_pixel = 100 * pixels[k] / max;
+        // 四捨五入
+        reg_pixels[k] = (double)pixels[k]/(double)max;
+        reg_pixels[k] *= 100.0;
+        reg_pixels[k] += 0.5;
+      }
+
+    }
+  }
+  //　画素値の表示
+  printf("＜度数表＞\n");
+  for(i=0; i<256; i++){
+    printf("level %3d : %4d\n", i, pixels[i]);
+  }
+
+  // 最大度数の表示
+  printf("\n＜最大度数＞\n");
+  printf("level %3d : %4d\n", max_num, max);
+
+  // 正規化した画素値の表示
+  printf("\n＜度数表＞\n");
+  for(i=0; i<256; i++){
+    printf("level %3d : %4d ---> %3d\n", i, pixels[i], (int)reg_pixels[i]);
+  }
+
+  // ヒストグラムの作成
+  // 表示領域を黒で塗りつぶす
+  for(i=0; i<100; i++){
+    for(j=0; j<256; j++){
+      imgout[0][j][i] = 0;
+      imgout[1][j][i] = 128;
+      imgout[2][j][i] = 128;
+    }
+  }
+  //ヒストグラムを赤色で表示
+  for(j=0; j<256; j++){
+    for(i=0; i<(int)reg_pixels[j]; i++){
+      imgout[1][j][i] = 128;
+      imgout[2][j][i] = 255;
+    }
+  }
+  //  printf("\n出力画像データを作成しました.\n");
+}
