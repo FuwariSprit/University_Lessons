@@ -1,0 +1,43 @@
+Script started on Wed Apr 26 18:53:33 2017
+u286120@imac-210[31]: cat 2-4.x[Kc
+#include<stdio.h>
+
+int point(int n);
+
+int main(void){
+  int n, p;
+  
+  printf("いくつ買いますか ?:");
+  scanf("%d", &n);
+  p = point(n);
+  printf("ポイントは%d点です.\n", p);
+  
+  return 0;
+}
+
+int point(int n){
+  int p;
+
+  if(n == 1){
+    p = 10;
+  } else if(n >= 2 && n <=10)
+    p = 10 + 5 * (n-1);
+  else
+    p = point(n-1) * 1.1;
+
+  return p;
+}
+u286120@imac-210[32]: gcc -Wall -o 2-4 2-4.x[Kc
+u286120@imac-210[33]: 2-4
+いくつ買いますか ?:1
+ポイントは10点です.
+u286120@imac-210[34]: 2-4
+いくつ買いますか ?:10
+ポイントは55点です.
+u286120@imac-210[35]: 2-4
+いくつ買いますか ?:15
+ポイントは86点です.
+u286120@imac-210[36]: exit
+exit
+
+Script done on Wed Apr 26 18:54:11 2017

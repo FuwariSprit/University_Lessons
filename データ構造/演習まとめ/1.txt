@@ -1,0 +1,46 @@
+Script started on Thu Jul 27 18:21:54 2017
+u286120@imac-407[31]: ca t 1.c
+#include<stdio.h>
+
+int fibonacchi(int n);
+
+int main(void){
+  int n, ans;
+
+  printf("n番目のフィボナッチ数を求めます。\n");
+  printf("nの値は?：");
+  scanf("%d", &n);
+
+  ans = fibonacchi(n);
+  
+  printf("n番目のフィボナッチ数は%dです。\n", ans);
+
+  return 0;
+}
+
+int fibonacchi(int n){
+  int ans;
+
+  if(n == 0){
+    return 0;
+  }
+  if(n == 1){
+    return 1;
+  }
+  ans = fibonacchi(n-1) + fibonacchi(n-2);
+
+  return ans;
+}
+u286120@imac-407[32]: gcc -Wall -o 1 1.c
+u286120@imac-407[33]: 1
+n番目のフィボナッチ数を求めます。
+nの値は?：5
+n番目のフィボナッチ数は5です。
+u286120@imac-407[34]: 1
+n番目のフィボナッチ数を求めます。
+nの値は?：10
+n番目のフィボナッチ数は55です。
+u286120@imac-407[35]: exit
+exit
+
+Script done on Thu Jul 27 18:22:30 2017

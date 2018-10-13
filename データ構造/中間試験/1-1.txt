@@ -1,0 +1,78 @@
+Script started on Fri Jun  2 11:17:34 2017
+u286120@imac-116[31]: cat 1-1.c
+#include<stdio.h>
+
+#define NUM 5
+
+struct student {
+  char name[20];
+  int id;
+  int eng;
+  int math;
+  int phys;
+};
+
+int main(void){
+  int i, sum, max, min;
+  double avg_sum = 0, avg_sub[3] = {};
+
+  struct student seito[NUM] = {
+    {"Abe", 286001, 80, 73, 44},
+    {"Igarashi", 286011, 62, 92, 50},
+    {"Sato", 286041, 82, 77, 60},
+    {"Suzuki", 286091, 74, 85, 94},
+    {"Takahashi", 286161, 76, 54, 87}
+  };
+
+  for(i=0; i<NUM; i++){
+    sum = seito[i].eng + seito[i].math + seito[i].phys;
+    printf("%s (%d)の合計点は：%d点\n", seito[i].name, seito[i].id, sum);
+    
+    if(i == 0){
+      max = sum;
+      min = sum;
+    } else {
+      if(max < sum){
+	max = sum;
+      }
+      if(min > sum){
+	min =sum;
+      }
+    }
+
+    avg_sum += (double)sum;
+    avg_sub[0] += (double)seito[i].eng;
+    avg_sub[1] += (double)seito[i].math;
+    avg_sub[2] += (double)seito[i].phys;
+  }
+
+  printf("\n------------------------\n");
+
+  printf("合計点の最高は：%d点\n", max);
+  printf("合計点の最低は：%d点\n", min);
+  printf("合計点の平均は：%.1lf点\n", avg_sum / NUM);
+  printf("英語の平均点は：%.1lf点\n", avg_sub[0] / NUM);
+  printf("数学の平均点は：%.1lf点\n", avg_sub[1] / NUM);
+  printf("物理の平均点は：%.1lf点\n", avg_sub[2] / NUM);
+
+  return 0;
+}
+u286120@imac-116[32]: gcc -Wall -o 1-1 1-1.c
+u286120@imac-116[33]: 1-1
+Abe (286001)の合計点は：197点
+Igarashi (286011)の合計点は：204点
+Sato (286041)の合計点は：219点
+Suzuki (286091)の合計点は：253点
+Takahashi (286161)の合計点は：217点
+
+------------------------
+合計点の最高は：253点
+合計点の最低は：197点
+合計点の平均は：218.0点
+英語の平均点は：74.8点
+数学の平均点は：76.2点
+物理の平均点は：67.0点
+u286120@imac-116[34]: eit[K[Kxt[Kit
+exit
+
+Script done on Fri Jun  2 11:18:13 2017

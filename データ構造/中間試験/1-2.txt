@@ -1,0 +1,72 @@
+Script started on Fri Jun  2 11:18:19 2017
+u286120@imac-116[31]: cat 1-2.c
+#include<stdio.h>
+
+#define NUM 4
+
+struct student {
+  char name[20];
+  int id;
+  double height;
+  double weight;
+};
+
+int main(void){
+  int i;
+  double hyojun;
+  struct student gakusei[NUM];
+  
+  FILE *fp;
+  fp = fopen("test.dat", "w");
+
+  for(i=0; i<NUM; i++){
+    printf("%d人目の学生番号は(6桁)？：", i+1);
+    scanf("%d", &gakusei[i].id);
+    printf("氏名は？：");
+    scanf("%s", gakusei[i].name);
+    printf("身長(cm)は？：");
+    scanf("%lf", &gakusei[i].height);
+    printf("体重(kg)は？：");
+    scanf("%lf", &gakusei[i].weight);
+
+    hyojun = (gakusei[i].height/100) * (gakusei[i].height/100) * 22.0;
+    
+    fprintf(fp, "%d %s %.1lf %.1lf %.1lf\n",
+	    gakusei[i].id, gakusei[i].name, gakusei[i].height, gakusei[i].weight, gakusei[i].weight - hyojun);
+  }
+
+  printf("\nファイル test.dat に出力します。\n");
+
+  fclose(fp);
+
+  return 0;
+}
+u286120@imac-116[32]: gcc 1-2[K[K[K-Wall -o 1-2 -[K1-2.c
+u286120@imac-116[33]: 1-2
+1人目の学生番号は(6桁)？：286020  10
+氏名は？：Ichiro
+身長(cm)は？：185.5
+体重(kg)は？：82.0
+2人目の学生番号は(6桁)？：286020
+氏名は？：Taro
+身長(cm)は？：195.0
+体重(kg)は？：75.0
+3人目の学生番号は(6桁)？：286030
+氏名は？：Jiro
+身長(cm)は？：165.5
+体重(kg)は？：45.5
+4人目の学生番号は(6桁)？：286040
+氏名は？：Saburo
+身長(cm)は？：175.4
+体重(kg)は？：60.0
+
+ファイル test.dat に出力します。
+u286120@imac-116[34]: cat test.dat 
+286010 Ichiro 185.5 82.0 6.3
+286020 Taro 195.0 75.0 -8.7
+286030 Jiro 165.5 45.5 -14.8
+286040 Saburo 175.4 60.0 -7.7
+u286120@imac-116[35]: wxit[K[K[K[Kexit
+exit
+
+Script done on Fri Jun  2 11:20:58 2017

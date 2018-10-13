@@ -1,0 +1,40 @@
+Script started on Wed Apr 26 18:49:09 2017
+u286120@imac-210[31]: 2-1[K[K[Kcat 2-1.c
+#include<stdio.h>
+#include<assert.h>
+
+int sum(int n);
+
+int main(void){
+  int value;
+  
+  printf("正の偶数を入力して下さい。\n");
+  scanf("%d", &value);
+  printf("sum(%d) = %d\n", value, sum(value));
+
+  return 0;
+}
+
+int sum(int n){
+  int ret;
+  assert(n % 2 == 0 & n > 0);
+
+  if(n == 2)
+    return 2;
+  ret =  n + sum(n-2);
+
+  return ret;
+}
+u286120@imac-210[32]: gcc -Wall -o 2-1 2-1.c
+u286120@imac-210[33]: 2-1
+正の偶数を入力して下さい。
+2
+sum(2) = 2
+u286120@imac-210[34]: 2-1
+正の偶数を入力して下さい。
+10
+sum(10) = 30
+u286120@imac-210[35]: exit
+exit
+
+Script done on Wed Apr 26 18:50:00 2017

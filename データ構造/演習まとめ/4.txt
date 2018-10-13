@@ -1,0 +1,67 @@
+Script started on Thu Jul 27 18:27:10 2017
+u286120@imac-407[31]: cat 4.c
+#include<stdio.h>
+#include<stdlib.h>
+
+#define NUM 4
+#define WORD 20
+
+int main(void){
+  int i, max = 0;
+  char ken[NUM][WORD] = {};
+  int zinko_area[NUM][2] = {};
+  double mitudo[NUM] = {};
+  FILE *fp;
+  
+  for(i=0; i<NUM; i++){
+    printf("%d番目の都道府県は?:", i+1);
+    scanf("%s", ken[i]);
+    printf("人口は?:");
+    scanf("%d", &zinko_area[i][0]);
+    printf("面積(㎢)は?:");
+    scanf("%d", &zinko_area[i][1]);
+  }
+
+  fp = fopen("test.txt", "w");
+  for(i=0; i<NUM; i++){
+    mitudo[i] = (double)zinko_area[i][0] / (double)zinko_area[i][1];
+    if(mitudo[max] < mitudo[i]){
+      max = i;
+    }
+    
+    fprintf(fp, "%s\t%d\t%d\t%.1lf\n", ken[i], zinko_area[i][0], zinko_area[i][1], mitudo[i]);
+  }
+  
+  fprintf(fp, "------------------------------------\n");
+  fprintf(fp, "最も人口密度が高いのは%sです。\n", ken[max]);
+  
+  fclose(fp);
+
+  return 0;
+  
+}
+u286120@imac-407[32]: gc c -[K-Wall -o 4 4.c
+u286120@imac-407[33]: 4
+1番目の都道府県は?:福島県
+人口は?:1988995
+面積(㎢)は?:13783
+2番目の都道府県は?:静岡県
+人口は?:3752592
+面積(㎢)は?:7781
+3番目の都道府県は?:滋賀県
+人口は?:1414398
+面積(㎢)は?:4017
+4番目の都道府県は?:^[[A^[[B        山口県
+人口は?:1442415
+面積(㎢)は?:6114
+u286120@imac-407[34]: cat test.txt
+福島県	1988995	13783	144.3
+静岡県	3752592	7781	482.3
+滋賀県	1414398	4017	352.1
+山口県	1442415	6114	235.9
+------------------------------------
+最も人口密度が高いのは静岡県です。
+u286120@imac-407[35]: exit
+exit
+
+Script done on Thu Jul 27 18:29:17 2017

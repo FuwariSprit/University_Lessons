@@ -1,0 +1,75 @@
+Script started on Fri Jun  9 12:02:49 2017
+u286120@imac-116[31]: cat 8-1.c
+#include<stdio.h>
+#define NUM 1000
+
+int n_comp = 0, n_exchange = 0;
+
+void bubble(int x[], int num);
+void swap(int *a, int *b);
+
+int main(void){
+  int i, num, x[NUM];
+  
+  scanf("%d", &num);
+  
+  for(i=0; i<num; i++){
+    scanf("%d", &x[i]);
+  }
+
+  printf("整列前データ\n");
+  for(i=0; i<num; i++){
+    printf("%4d", x[i]);
+  }
+  printf("\n");
+
+  bubble(x, num);
+
+  printf("整列後データ\n");
+  for(i=0; i<num; i++){
+    printf("%4d", x[i]);
+  }
+  printf("\n");
+
+  printf("比較回数:%d\n", n_comp);
+  printf("交換回数:%d\n", n_exchange);
+
+  return 0;
+}
+
+void bubble(int x[], int num){
+  int i, j;
+  for(i=num-1; i>=0; i--){
+    for(j=0; j<i; j++){
+      n_comp++;
+      if(x[j] > x[j+1]){
+	n_exchange++;
+	swap(&x[j], &x[j+1]);
+      }
+    }
+  }
+}
+
+void swap(int *a, int *b){
+  int tmp = *a;
+  *a = *b;
+  *b = tmp;
+}
+u286120@imac-116[32]: gcc -Wall -o 8-1 8-1.c
+u286120@imac-116[33]: 8-1
+5
+5
+4
+3
+2
+1
+整列前データ
+   5   4   3   2   1
+整列後データ
+   1   2   3   4   5
+比較回数:10
+交換回数:10
+u286120@imac-116[34]: exit
+exit
+
+Script done on Fri Jun  9 12:03:24 2017

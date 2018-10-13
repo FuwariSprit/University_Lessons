@@ -1,0 +1,104 @@
+Script started on Thu Jul 27 18:22:35 2017
+u286120@imac-407[31]: cat 1[K2.c
+#include<stdio.h>
+#include<string.h>
+
+#define NUM 25
+#define WORD 15
+
+typedef struct{
+  char character;
+  int count;
+}initial;
+
+void quick(initial chara[], int left, int right);
+void swap(initial *a, initial *b);
+void showlist(initial chara[]);
+
+int main(void){
+  char word[WORD];
+  int i = 0;
+  initial chara[NUM] = {{'a', 0}, {'b', 0}, {'c', 0}, {'d', 0}, {'e', 0},
+			{'f', 0}, {'g', 0}, {'h', 0}, {'i', 0}, {'j', 0},
+			{'k', 0}, {'l', 0}, {'m', 0}, {'n', 0}, {'o', 0},
+			{'p', 0}, {'q', 0}, {'r', 0}, {'s', 0}, {'t', 0},
+			{'u', 0}, {'v', 0}, {'w', 0}, {'x', 0}, {'y', 0}};
+  
+  while(1){
+    printf("英単語を入力してください：");
+    scanf("%s", word);
+
+    if(word[0] == 'z'){
+      break;
+    } else {
+      for(i=0; i<NUM; i++){
+	if(word[0] == chara[i].character){
+	  chara[i].count++;
+	}
+      }
+    }
+  }
+
+  quick(chara, 0, NUM-1);
+
+  printf("出現回数順に出力します。\n");
+  showlist(chara);
+
+  return 0;
+}
+
+void quick(initial chara[], int left, int right){
+  int pl = left;
+  int pr = right;
+  int pivot = (chara[pl].count + chara[pr].count) / 2;
+
+  while(1){
+    while(chara[pl].count > pivot) pl++;
+    while(chara[pr].count < pivot) pr--;
+    if(pr < pl) break;
+    swap(&chara[pl], &chara[pr]);
+    pl++;
+    pr--;
+  }
+
+  if(left < pr)
+    quick(chara, left, pr);
+  if(pl < right)
+    quick(chara, pl, right);
+}
+
+void swap(initial *a, initial *b){
+  initial tmp = *a;
+  *a = *b;
+  *b = tmp;
+}
+
+void showlist(initial chara[]){
+  int i;
+  for(i=0; i<NUM; i++){
+    if(chara[i].count > 0){
+      printf("%c : %d回\n", chara[i].character, chara[i].count);
+    }
+  }
+}
+u286120@imac-407[32]: gcc =[K-Wall -o 2 1.[K[K2.c
+u286120@imac-407[33]: 2
+英単語を入力してください：test
+英単語を入力してください：stack
+英単語を入力してください：top
+英単語を入力してください：bottom
+英単語を入力してください：structre
+英単語を入力してください：repeat
+英単語を入力してください：tag
+英単語を入力してください：program
+英単語を入力してください：zoom
+出現回数順に出力します。
+t : 3回
+s : 2回
+r : 1回
+p : 1回
+b : 1回
+u286120@imac-407[34]: exit
+exit
+
+Script done on Thu Jul 27 18:24:30 2017

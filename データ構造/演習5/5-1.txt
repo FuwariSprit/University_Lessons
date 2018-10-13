@@ -1,0 +1,71 @@
+Script started on Wed May 24 20:04:51 2017
+u286120@imac-408[31]: cat 5-1x[K.c
+#include<stdio.h>
+
+struct student {
+  int id;
+  char name[20];
+  double height;
+  double weight;
+};
+
+int main(void){
+  struct student gakusei[5];
+  int i;
+
+  printf("構造体配列のサイズ:%d Byte\n", sizeof(gakusei));
+  for(i=0; i<5; i++){
+    printf("学生番号:");
+    scanf("%d", &gakusei[i].id);
+    printf("氏名:");
+    scanf("%s", gakusei[i].name);
+    printf("身長:");
+    scanf("%lf", &gakusei[i].height);
+    printf("体重:");
+    scanf("%lf", &gakusei[i].weight);
+  }
+  for(i=0; i<5; i++){
+    printf("学生番号:%d 氏名:%s 身長:%.1lfcm 体重:%.1lfkg\n",
+	   gakusei[i].id, gakusei[i].name, gakusei[i].height, gakusei[i].weight);
+  }
+  
+  return 0;
+}
+u286120@imac-408[32]: cat 5-1.c[23Gexit[K5-1[Kgcc -Wall -o 5-1 5-1.c[23G[13Pcat[32G[23G[13@gcc -Wall -o 5-1[45G
+[1m5-1.c:14:51: [0m[0;1;35mwarning: [0m[1mformat specifies type 'int' but the argument has type
+      'unsigned long' [-Wformat][0m
+  printf("構造体配列のサイズ:%d Byte\n", sizeof(gakusei));
+[0;1;32m                             ~~          ^~~~~~~~~~~~~~~
+[0m[0;32m                             %lu
+[0m1 warning generated.
+u286120@imac-408[33]: gcc -Wall -o 5-1 5-1.c[23G[13Pcat[32G[23Gexit[K5-1[Kgcc -Wall -o 5-1 5-1.c[23G5-1[K
+構造体配列のサイズ:200 Byte
+学生番号:276001
+氏名:阿部
+身長:178.5
+体重:72.0
+学生番号:276011
+氏名:佐藤
+身長:168.0
+体重:55.5
+学生番号:276022
+氏名:鈴木
+身長:163.5
+体重:820 .0
+学生番号:276013  33
+氏名:高橋
+身長:185.0
+体重:76.5
+学生番号:2760144   44
+氏名:和棚  渡辺^[[D^[[D        ^[[D^[[C          渡辺
+身長:175.0
+体重:64, .0
+学生番号:276001 氏名:阿部 身長:178.5cm 体重:72.0kg
+学生番号:276011 氏名:佐藤 身長:168.0cm 体重:55.5kg
+学生番号:276022 氏名:鈴木 身長:163.5cm 体重:82.0kg
+学生番号:276033 氏名:高橋 身長:185.0cm 体重:76.5kg
+学生番号:276044 氏名:渡辺 身長:175.0cm 体重:64.0kg
+u286120@imac-408[34]: exit
+exit
+
+Script done on Wed May 24 20:07:34 2017

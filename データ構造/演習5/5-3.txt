@@ -1,0 +1,74 @@
+Script started on Wed May 24 20:08:21 2017
+u286120@imac-408[31]: cat 5-3.c
+#include<stdio.h>
+#include<math.h>
+
+typedef struct {
+  double x;
+  double y;
+}Point;
+
+double dt(Point zahyo[3]);
+
+int main(void){
+  int i;
+  double distance;
+  Point zahyo[3];
+
+  printf("3点の座標を入力して下さい\n");
+  for(i=0; i<3; i++){
+    printf("x: ");
+    scanf("%lf", &zahyo[i].x);
+    printf("y: ");
+    scanf("%lf", &zahyo[i].y);
+  }
+
+  distance = dt(zahyo);
+
+  if(distance == -1){
+    printf("計算不能\n");
+  } else {
+    printf("%.2lf\n", distance);
+  }
+
+  return 0;
+}
+
+double dt(Point zahyo[3]){
+  double x_y;
+  double y_z;
+  double z_x;
+
+  x_y = sqrt(pow((zahyo[0].x - zahyo[1].x), 2) + pow((zahyo[0].y - zahyo[1].y), 2));
+  y_z = sqrt(pow((zahyo[1].x - zahyo[2].x), 2) + pow((zahyo[1].y - zahyo[2].y), 2));
+  z_x = sqrt(pow((zahyo[2].x - zahyo[0].x), 2) + pow((zahyo[2].y - zahyo[0].y), 2));
+
+  if(x_y + y_z > z_x && y_z + z_x > x_y && z_x + x_y > y_z){
+    return x_y + y_z + z_x;
+  } else {
+    return -1;
+  }
+}
+u286120@imac-408[32]: gcc -Wall -o  -o- -ol -om -o -o 5-3 5-3.x[Kc
+u286120@imac-408[33]: 5-3
+3点の座標を入力して下さい
+x: 10
+y: 20
+x: 30
+y: 40
+x: 50
+y: 60
+計算不能
+u286120@imac-408[34]: 5-3
+3点の座標を入力して下さい
+x: 1
+y: 12
+x: 8
+y: 4
+x: 56
+y: 25
+119.54
+u286120@imac-408[35]: exit
+exit
+
+Script done on Wed May 24 20:09:54 2017

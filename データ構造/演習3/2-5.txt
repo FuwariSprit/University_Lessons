@@ -1,0 +1,45 @@
+Script started on Fri Apr 28 11:58:21 2017
+u286120@imac-116[31]: cat 2-5.c
+#include<stdio.h>
+
+#define MAXNUM 10
+
+int main(void){
+  int nin;
+  int data[MAXNUM], *pdata;
+  int goukei;
+  int i;
+
+  scanf("%d", &nin);
+  for(i=0; i<nin; i++){
+    scanf("%d", &data[i]);
+  }
+
+  pdata = data;
+
+  for(i=0; i<nin; i++){
+    *pdata++ = *(data+i) + 43;
+  }
+
+  pdata = &data[0];
+  goukei = *pdata;
+
+  for(i=1; i<nin; i++){
+    goukei += *(pdata + i);
+  }
+
+  printf("合計=%d\n", goukei);
+
+  return 0;
+}
+u286120@imac-116[32]: gcc -Wall -o 2-5 2-5.c
+u286120@imac-116[33]: 2-5
+3
+10
+20
+30
+合計=189
+u286120@imac-116[34]: exit
+exit
+
+Script done on Fri Apr 28 11:59:02 2017

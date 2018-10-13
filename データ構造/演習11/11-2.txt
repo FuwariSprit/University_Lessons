@@ -1,0 +1,30 @@
+Script started on Thu Jul  6 16:13:09 2017
+u286120@cse-ssh2[31]: car[Kt 11-3.c[K[K[K2.c
+#include<stdio.h>
+
+#define NUM 10
+
+void ShowList(int data[]);
+
+int main(void){
+  int index[NUM] = {2, 4, 6, 8, 10, 12, 14, 16, 18, -1};
+
+  ShowList(index);
+
+  return 0;
+}
+
+void ShowList(int data[]){
+  printf("リスト:");
+  for(int i=0; data[i]!=-1; i++){
+    printf("%d ", data[i]);
+  }
+  printf("\n");
+}
+u286120@cse-ssh2[32]: gcc -Wall -o 110[K-2 11-2.c
+u286120@cse-ssh2[33]: 11-2
+リスト:2 4 6 8 10 12 14 16 18 
+u286120@cse-ssh2[34]: exit
+exit
+
+Script done on Thu Jul  6 16:13:35 2017

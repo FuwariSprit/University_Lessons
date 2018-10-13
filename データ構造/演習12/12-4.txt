@@ -1,0 +1,136 @@
+Script started on Wed Jul 12 18:04:28 2017
+u286120@imac-144[31]: cat 12-4.v[Kc
+#include<stdio.h>
+
+#define STACK_SIZE 5
+#define NO_DATA -1
+
+int Push(int data);
+int Pop();
+void ShowStack();
+
+int stack[STACK_SIZE];
+int sp = -1;
+
+int main(void){
+  int i, state, data, jadge;
+
+  for(i=0; i<STACK_SIZE; i++){
+    stack[i] = NO_DATA;
+  }
+
+  while(1){
+    printf("(1)Push (2)Pop (0)Exit :");
+    scanf("%d", &state);
+
+    if(state==1){
+      printf("Data:");
+      scanf("%d", &data);
+      jadge = Push(data);
+      if(jadge==-1){
+	printf("Stack Overflow!\n");
+	printf("Stack Push failed!\n");
+      }
+
+    } else if(state==2){
+      jadge = Pop();
+      if(jadge==-1){
+	printf("Stack Empty!\n");
+	printf("Stack Pop is failed!");
+      } else {
+	printf("Pop data is %d\n", jadge);      
+      }
+
+    } else if(state==0){
+      break;
+    }
+
+    ShowStack();
+  }
+
+  return 0;
+}
+
+int Push(int data){
+  sp++;
+
+  if(sp==STACK_SIZE){
+    sp--;
+    return -1;
+  } else {
+    stack[sp] = data;
+    return 0;
+  }
+}
+
+int Pop(){
+  if(sp<0){
+    return -1;
+  } else {
+    int data = stack[sp];
+    sp--;
+
+    return data;
+  }
+}
+
+void ShowStack(){
+  int i;
+  printf("Stack:");
+  for(i=0; i<=sp; i++){
+    printf("[%d]", stack[i]);
+  }
+
+  printf("\n");
+}
+u286120@imac-144[32]: 12[K[Kgcc -E[KWall -o 12-44[K 12-4.c
+u286120@imac-144[33]: 12-4
+(1)Push (2)Pop (0)Exit :1
+Data:111
+Stack:[111]
+(1)Push (2)Pop (0)Exit :1
+Data:222
+Stack:[111][222]
+(1)Push (2)Pop (0)Exit :1
+Data:333
+Stack:[111][222][333]
+(1)Push (2)Pop (0)Exit :1
+Data:444
+Stack:[111][222][333][444]
+(1)Push (2)Pop (0)Exit :1
+Data:555
+Stack:[111][222][333][444][555]
+(1)Push (2)Pop (0)Exit :16 
+Data:666
+Stack Overflow!
+Stack Push failed!
+Stack:[111][222][333][444][555]
+(1)Push (2)Pop (0)Exit :2
+Pop data is 555
+Stack:[111][222][333][444]
+(1)Push (2)Pop (0)Exit :2
+Pop data is 444
+Stack:[111][222][333]
+(1)Push (2)Pop (0)Exit :1
+Data:666
+Stack:[111][222][333][666]
+(1)Push (2)Pop (0)Exit :2
+Pop data is 666
+Stack:[111][222][333]
+(1)Push (2)Pop (0)Exit :2
+Pop data is 333
+Stack:[111][222]
+(1)Push (2)Pop (0)Exit :2
+Pop data is 222
+Stack:[111]
+(1)Push (2)Pop (0)Exit :2
+Pop data is 111
+Stack:
+(1)Push (2)Pop (0)Exit :2
+Stack Empty!
+Stack Pop is failed!Stack:
+(1)Push (2)Pop (0)Exit :0
+u286120@imac-144[34]: exit
+exit
+
+Script done on Wed Jul 12 18:06:02 2017
